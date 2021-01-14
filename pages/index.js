@@ -1,7 +1,58 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image'
 
-import {Banner,Layout,Main, Footer} from '../styles'
+import Card from '../components/cards/Card';
+import { Banner, Layout, Main,Grid, CardStyle, Footer } from '../styles'
+const bgImage = "/image/dbbg.jpg";
+
+const characters = [
+  {
+    "id":"1",
+    "name": "Kakarroto (Goku)",
+    "race": "Saiyan",
+    "gender": "Male",
+    "currentPlanet":"Earth",
+    "status":"Alive",
+    "image":"/image/goku.jpeg",
+    "class": "Mastered Ultra Instinct",
+    "group":"Z Fighters"
+  },
+  {
+    "id":"2",
+    "name": "Vegeta",
+    "race": "Saiyan",
+    "gender": "Male",
+    "currentPlanet":"Earth",
+    "status":"Alive",
+    "image":"/image/vegeta.jpeg",
+    "class": "SS Evolution",
+    "group":"Ex. Frieza Force"
+  },
+  {
+    "id":"3",
+    "name": "Gohan",
+    "race": "Half-Saiyan",
+    "gender": "Male",
+    "currentPlanet":"Earth",
+    "status":"Alive",
+    "image":"/image/gohan.jpeg",
+    "class": "Mystic Gohan",
+    "group":"Z Fighters"
+  },
+  {
+    "id":"4",
+    "name": "Frieza",
+    "race": "Unknown",
+    "gender": "Male",
+    "currentPlanet":"In Space",
+    "status":"Alive",
+    "image":"/image/frieza.jpeg",
+    "level": "Golden Frieza",
+    "group":"Leader of Frieza Force"
+  }
+]
+
 
 export default function Home() {
   return (
@@ -12,23 +63,38 @@ export default function Home() {
       </Head>
       <Layout>
         <div className="wrapper">
-          <Banner display="flex" color="orange">
+          <Banner display="flex" color="#000217" bgImage={bgImage} mode="color-dodge">
             <h1>Dragonball Super</h1>
-            <h2>Hall of Fame</h2>
           </Banner>
           <Main>
-
+            <Grid>
+             {
+               characters.map(character => <CardStyle>
+                <Card 
+                  key={character.id} 
+                  name={character.name}
+                  gender={character.gender}
+                  race={character.race}
+                  status={character.status}
+                  level={character.level}
+                  currentPlanet={character.currentPlanet}
+                  group={character.group}
+                  image={character.image}
+                />
+              </CardStyle>)
+             }
+            </Grid>
           </Main>
 
           <Footer>
-              Powered by{' '}
-              <img src="/vercel.svg" alt="Vercel Logo" className="logo" />{' '} 
+            Powered by{' '}
+            <img src="/vercel.svg" alt="Vercel Logo" className="logo" />{' '}
               Made by KenChi
           </Footer>
         </div>
-       
+
       </Layout>
-      
+
       <style jsx global>{`
         html,
         body {
@@ -38,6 +104,7 @@ export default function Home() {
             Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
             sans-serif;
             color: #333;
+            background-color:#000217;
         }
 
         * {
