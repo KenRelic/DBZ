@@ -53,10 +53,11 @@ export const Layout = styled("div")`
 `
 
 export const Main = styled("main")`
+align-self:flex-start;
 flex: 1;
 display: flex;
 flex-direction: column;
-justify-content: center;
+justify-content: flex-start;
 align-items: center;
 padding: 1rem 1rem;
 margin: 0 auto 2rem auto;
@@ -67,7 +68,7 @@ width:100%;
 }
 
 @media (min-width: 768px) {
- width: 85%;
+ width: 100%;
 }
 
 @media (min-width: 1024px) {
@@ -130,8 +131,12 @@ cursor: pointer;
       @media (min-width: 768px) {
           width: 85%;
           padding:3rem;   
-
       }
+
+      @media (min-width: 860px) {
+        width: 45%;
+        padding:3rem;   
+    }
 `
 
 export const Title = styled("h1")`
